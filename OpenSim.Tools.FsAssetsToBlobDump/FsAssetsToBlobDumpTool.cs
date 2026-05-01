@@ -322,12 +322,28 @@ internal static class FsAssetsToBlobDumpTool
 
     private static void PrintHelp()
     {
-        Console.WriteLine("OpenSim.Tools.FsAssetsToBlobDump (C#)");
+        Console.WriteLine("OpenSim.Tools.FsAssetsToBlobDump");
         Console.WriteLine("Konvertiert FSAssets (Verzeichnis + fsassets) zu SQL-Dumps fuer assets.data (Blob)");
+        Console.WriteLine("Die Ausgabe wird in separate SQL-Dateien pro AssetType aufgeteilt (assets_type_N.sql)");
+        Console.WriteLine();
+        Console.WriteLine("Optionen:");
+        Console.WriteLine("  --db-host HOST              Database Host (default: 127.0.0.1)");
+        Console.WriteLine("  --db-port PORT              Database Port (default: 3306)");
+        Console.WriteLine("  --db-user USER              Database Benutzer (erforderlich)");
+        Console.WriteLine("  --db-password PASSWORD      Database Passwort");
+        Console.WriteLine("  --db-name DATABASE          Database Name (erforderlich)");
+        Console.WriteLine("  --fs-table TABLE            FSAssets Tabelle (default: fsassets)");
+        Console.WriteLine("  --assets-table TABLE        Assets Tabelle (default: assets)");
+        Console.WriteLine("  --base-directory DIR        Basis-Verzeichnis fuer Assets (erforderlich)");
+        Console.WriteLine("  --spool-directory DIR       Spool-Verzeichnis fuer Assets");
+        Console.WriteLine("  --use-osgrid-format         OSGrid-Pfadformat verwenden");
+        Console.WriteLine("  --output-dir DIR            Ausgabe-Verzeichnis fuer SQL-Dateien (default: ./blob-dumps)");
+        Console.WriteLine("  --where CLAUSE              SQL WHERE Bedingung zum Filtern");
+        Console.WriteLine("  --help, -h                  Diese Hilfe anzeigen");
         Console.WriteLine();
         Console.WriteLine("Beispiel:");
         Console.WriteLine("  dotnet run --project addon-modules/os-fs2blob/OpenSim.Tools.FsAssetsToBlobDump.csproj -- \\");
-        Console.WriteLine("    --db-host 127.0.0.1 --db-port 3306 --db-user USER --db-name DBNAME \\");
+        Console.WriteLine("    --db-host 127.0.0.1 --db-port 3306 --db-user USER --db-password PASS --db-name DBNAME \\");
         Console.WriteLine("    --base-directory /opt/opensim/fsassets/data --spool-directory /opt/opensim/fsassets/tmp \\");
         Console.WriteLine("    --output-dir ./blob-dumps");
     }
